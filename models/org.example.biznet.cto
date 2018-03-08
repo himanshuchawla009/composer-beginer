@@ -1,0 +1,26 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace org.example.biznet
+
+participant Trader identified by tradeId {
+  o String tradeId
+  o String traderName
+  o String traderLastname
+
+}
+
+asset Commodity identified by tradingSymbol {
+  o String tradingSymbol
+  o String description
+  o Double quantity
+  o String mainExchange
+  --> Trader owner
+
+}
+
+transaction Trade{
+   --> Commodity commodity
+   --> Trader newOwner
+}
